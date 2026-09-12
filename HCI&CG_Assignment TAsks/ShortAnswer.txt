@@ -1,0 +1,5 @@
+ Why does adding an Alpha channel (RGBA) increase an image array’s memory consumption by 33% compared to standard RGB?
+
+ ANSWER : Each pixel in an RGB image stores 3 values — one byte each for Red, Green, and Blue — so an RGB image array has 3 channels. RGBA adds a 4th channel, Alpha, which stores transparency information rather than color data. Since image arrays allocate memory uniformly per channel (each channel takes one byte per pixel), increasing the channel count from 3 to 4 raises total memory by a factor of 4/3 ≈ 1.333 — about 33% more bytes overall, even though the Alpha channel contributes no color information, only transparency.
+
+          As a concrete example using your Task 2 image: a 300×400 RGB array has 300×400×3 = 360,000 bytes. The same image as RGBA would have 300×400×4 = 480,000 bytes — exactly a 33% increase.
